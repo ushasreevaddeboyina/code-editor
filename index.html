@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Editor Application</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="left">
+        <label for="">HTML</label>
+        <textarea name="" id="html" onkeyup="run()"></textarea>
+        <label for="">CSS</label>
+        <textarea name="" id="css" onkeyup="run()"></textarea>
+        <label for="">JS</label>
+        <textarea name="" id="js" onkeyup="run()"></textarea>
+      </div>
+      <div class="right">
+        <label for="">Output</label>
+        <iframe id="output" frameborder="0"></iframe>
+      </div>
+    </div>
+    <script>
+      function run() {
+        let htmlcode = document.getElementById("html").value;
+        let csscode = document.getElementById("css").value;
+        let jscode = document.getElementById("js").value;
+        let output = document.getElementById("output");
+
+        output.contentDocument.body.innerHTML =
+          htmlcode + "<style>" + csscode + "</style>";
+        output.contentWindow.eval(jscode);
+      }
+    </script>
+  </body>
+</html>
